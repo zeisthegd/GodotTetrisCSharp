@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Art/Background/LoginMenu.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/LoginScreen.cs" type="Script" id=2]
+[ext_resource path="res://Art/UI/LoginWindow.png" type="Texture" id=3]
+[ext_resource path="res://Art/UI/Buttons3.png" type="Texture" id=4]
+[ext_resource path="res://Art/UI/Buttons4.png" type="Texture" id=5]
+[ext_resource path="res://Art/UI/Buttons1.png" type="Texture" id=6]
+[ext_resource path="res://Art/UI/Buttons2.png" type="Texture" id=7]
+[ext_resource path="res://Art/UI/CloseWindowButton2.png" type="Texture" id=8]
+[ext_resource path="res://Art/UI/CloseWindowButton1.png" type="Texture" id=9]
+
+[node name="LoginScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginButton" type="TextureButton" parent="."]
+margin_left = 171.0
+margin_top = 187.0
+margin_right = 211.0
+margin_bottom = 227.0
+
+[node name="LoginWindow" type="TextureRect" parent="."]
+visible = false
+margin_left = 96.0
+margin_top = 145.057
+margin_right = 288.0
+margin_bottom = 263.057
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="TextureButton" parent="LoginWindow"]
+margin_left = 31.947
+margin_top = 96.0477
+margin_right = 79.9471
+margin_bottom = 112.048
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="TextureButton" parent="LoginWindow"]
+margin_left = 112.207
+margin_top = 95.9317
+margin_right = 160.207
+margin_bottom = 111.932
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="LineEdit" parent="LoginWindow"]
+margin_left = 81.0
+margin_top = 32.0
+margin_right = 175.0
+margin_bottom = 56.0
+rect_scale = Vector2( 1, 0.575 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Password" type="LineEdit" parent="LoginWindow"]
+margin_left = 80.8953
+margin_top = 64.0
+margin_right = 174.895
+margin_bottom = 88.0
+rect_scale = Vector2( 1, 0.575 )
+align = 1
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="TextureButton" parent="LoginWindow"]
+margin_left = 171.977
+margin_top = 4.86653
+margin_right = 183.977
+margin_bottom = 12.8665
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+[connection signal="pressed" from="LoginButton" to="." method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="LoginWindow/Login" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="LoginWindow/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="LoginWindow/Close" to="." method="_on_Close_pressed"]

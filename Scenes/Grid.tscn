@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Grid" type="TileMap"]
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="GridVisualizer" type="Node2D" parent="."]

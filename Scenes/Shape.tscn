@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Shape.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/ImitationShape.cs" type="Script" id=3]
+
+[node name="Shape" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Block0" parent="." instance=ExtResource( 1 )]
+position = Vector2( -24, 0 )
+
+[node name="Block1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -8, 0 )
+
+[node name="Block2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+
+[node name="Block3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 24, 0 )
+
+[node name="ImitationShape" type="KinematicBody2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Block0" parent="ImitationShape" instance=ExtResource( 1 )]
+visible = false
+
+[node name="Block1" parent="ImitationShape" instance=ExtResource( 1 )]
+visible = false
+
+[node name="Block2" parent="ImitationShape" instance=ExtResource( 1 )]
+visible = false
+
+[node name="Block3" parent="ImitationShape" instance=ExtResource( 1 )]
+visible = false
+
+[node name="InvisibleTween" type="Tween" parent="."]
+
+[node name="DropTimer" type="Timer" parent="."]
+[connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]
+
+[editable path="Block0"]
