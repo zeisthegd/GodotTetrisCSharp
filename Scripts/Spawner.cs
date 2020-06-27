@@ -17,7 +17,7 @@ public class Spawner : Node2D
 		base._Ready();
 		Game game = (Game)GetParent();
 		game.InitGameBoard();
-		Position2D UISpawnPos = (Position2D)GetParent().GetNode("UI/MarginContainer/VBoxContainer/NextBlock/Panel/SpawnPos");
+		Position2D UISpawnPos = (Position2D)GetParent().GetNode("UI/NextBlock/Panel/SpawnPos");
 
 		spawnPos = UISpawnPos.GlobalPosition;
 
@@ -43,7 +43,9 @@ public class Spawner : Node2D
 		shape.ChangeShape(newShape);
 
 		if (newShape == 0)
-			shape.Position = spawnPos - new Vector2(16,0);
+        {
+            shape.Position = spawnPos - new Vector2(8, 0);
+        }
         else if(newShape == 4)
             shape.Position = spawnPos - new Vector2(8, 0);
         else

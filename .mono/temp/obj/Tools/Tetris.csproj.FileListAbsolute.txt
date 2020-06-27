@@ -4,3 +4,9 @@ C:\Users\Nguyen\Documents\Godot\Tetris\.mono\temp\obj\Tools\Tetris.csprojAssembl
 C:\Users\Nguyen\Documents\Godot\Tetris\.mono\temp\obj\Tools\Tetris.csproj.CoreCompileInputs.cache
 C:\Users\Nguyen\Documents\Godot\Tetris\.mono\temp\obj\Tools\Tetris.dll
 C:\Users\Nguyen\Documents\Godot\Tetris\.mono\temp\obj\Tools\Tetris.pdb
+C:\Users\Nguyen\Desktop\Giao Trinh\Of School\BT C#\Cuoi Ki\Tetris\.mono\temp\bin\Tools\Tetris.dll
+C:\Users\Nguyen\Desktop\Giao Trinh\Of School\BT C#\Cuoi Ki\Tetris\.mono\temp\bin\Tools\Tetris.pdb
+C:\Users\Nguyen\Desktop\Giao Trinh\Of School\BT C#\Cuoi Ki\Tetris\.mono\temp\obj\Tools\Tetris.csprojAssemblyReference.cache
+C:\Users\Nguyen\Desktop\Giao Trinh\Of School\BT C#\Cuoi Ki\Tetris\.mono\temp\obj\Tools\Tetris.csproj.CoreCompileInputs.cache
+C:\Users\Nguyen\Desktop\Giao Trinh\Of School\BT C#\Cuoi Ki\Tetris\.mono\temp\obj\Tools\Tetris.dll
+C:\Users\Nguyen\Desktop\Giao Trinh\Of School\BT C#\Cuoi Ki\Tetris\.mono\temp\obj\Tools\Tetris.pdb

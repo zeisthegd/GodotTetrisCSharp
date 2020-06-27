@@ -12,9 +12,12 @@ public class AutoLoad : Node
     string configPath;
     string savePath;
 
+    public const int WINDOW_HEIGHT = 416, WINDOW_WIDTH = 384;
+
+
 
     const int CELL_SIZE = 16;
-    const float DEFAULT_SHAPE_DROP_SPEED = 1.04f;
+    const float DEFAULT_SHAPE_DROP_SPEED = 1f;
 
     AudioStreamPlayer musicPlayer = new AudioStreamPlayer();
     static float shapeDropSpeed = DEFAULT_SHAPE_DROP_SPEED;

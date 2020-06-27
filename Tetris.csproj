@@ -57,7 +57,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\AutoLoad.cs" />
     <Compile Include="Scripts\Block.cs" />
+    <Compile Include="Scripts\Buttons\MiniButton.cs" />
     <Compile Include="Scripts\Game.cs" />
+    <Compile Include="Scripts\GameOver.cs" />
     <Compile Include="Scripts\ImitationShape.cs" />
     <Compile Include="Scripts\LoginScreen.cs" />
     <Compile Include="Scripts\RankingScene.cs" />

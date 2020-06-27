@@ -7,7 +7,7 @@ public class Shape : KinematicBody2D
 {
 
 	AudioStreamPlayer2D audioPlayer;
-	Control userInterface;
+	UI userInterface;
 	Game game;
 	ImitationShape imitation;
 	Tween invisibleTween;
@@ -25,7 +25,7 @@ public class Shape : KinematicBody2D
 
 	Vector2[,] SHAPES = new Vector2[,]
 	{
-		{new Vector2(1, -1), new Vector2(1, 0), new Vector2(1, 1), new Vector2(1, 2) },//I
+		{new Vector2(-1, 0), new Vector2(0, 0), new Vector2(1, 0), new Vector2(2, 0) },//I
 		{new Vector2(-1, 1),new Vector2(-1, 0),new Vector2(0, 0),new Vector2(1, 0) },//L
 		{new Vector2(0, 1),new Vector2(1, 0), new Vector2(0, 0), new Vector2(-1, 0) },//T
 		{new Vector2(-1, 1),new Vector2(0, 1),new Vector2(0, 0),new Vector2(1, 0)},//S
@@ -47,6 +47,8 @@ public class Shape : KinematicBody2D
 		dropTimer.WaitTime = AutoLoad.ShapeDropSpeed;
 
 		game = (Game)GetParent().GetParent();
+
+        userInterface = (UI)GetParent().GetParent().GetNode("UI");
 
 		//shapeDropSound = (AudioStreamSample)ResourceLoader.Load("");
 		//lineBreakSound = (AudioStreamSample)ResourceLoader.Load("");
@@ -116,19 +118,19 @@ public class Shape : KinematicBody2D
 
 		if (!IsValidPosition(Vector2.Zero, blocks))
 		{
-			Position = new Vector2(200, 0);
+			Position = new Vector2(200, 8);
 			game.GameOver = true;
 
 			if (!IsValidPosition(Vector2.Zero, blocks))
-				Position = new Vector2(200, 24);
+				Position = new Vector2(200, 8);
 		}
 
 
 		if (game.GameOver)
 		{
-			//userInterface.GameOverFunction();
-			audioPlayer.Stream = gameOverSound;
-			audioPlayer.Play();
+			userInterface.GameOverFunction();
+			//audioPlayer.Stream = gameOverSound;
+			//audioPlayer.Play();
 		}
 		else
 		{
@@ -145,23 +147,31 @@ public class Shape : KinematicBody2D
 		{
 			try
 			{
+                //Get each block's next position
 				Vector2 nextPos = block.GlobalPosition + direction * AutoLoad.CellSize;
+
+                if (nextPos.y == 8)
+                    return true;
+                if (nextPos.y < 8)
+                    return false;
+
+                //Check if that next position is possible for the block to move to
 				if (Math.Round(nextPos.x) < 112 || Math.Round(nextPos.x) > 272 || Mathf.Round(nextPos.y) > 416
-					|| game.Board[((int)Math.Round(nextPos.y) / AutoLoad.CellSize) - 1][((int)Math.Round(nextPos.x) / AutoLoad.CellSize) - 7] != "[]")
-				{
+					|| game.Board[Mathf.Abs(((int)Math.Round(nextPos.y) / AutoLoad.CellSize)) - 1][((int)Math.Round(nextPos.x) / AutoLoad.CellSize) - 7] != "[]")
 					return false;
-				}
+
 			}
-			catch
+			catch(Exception ex)
 			{
 				GD.Print(block.GlobalPosition + direction * AutoLoad.CellSize);
-			}
+                GD.Print(ex.Message);
+            }
 
 		}
 		return true;
 	}
 
-	private void ChangeRotation()
+	public void ChangeRotation()
 	{
 		if (active && shape != 4)
 		{
@@ -201,12 +211,14 @@ public class Shape : KinematicBody2D
 		//Delete blocks from fullRows
 		foreach (int row in rows)
 		{
-			var rowYPos = row * AutoLoad.CellSize;
-			for (int block = blocks.Count - 1; block <= -1; block--)
+			var rowYPos = row * AutoLoad.CellSize + 8;
+			GD.Print($"RowYPos = {rowYPos}");
+			for (int block = blocks.Count - 1; block >= 0; block--)
 			{
+				GD.Print($"globY = {Math.Round(blocks[block].GlobalPosition.y)}");
 				if (Math.Round(blocks[block].GlobalPosition.y) == rowYPos)
-				{
-					blocks[block].Free();
+				{					
+					blocks[block].QueueFree();
 					blocks.RemoveAt(block);
 				}
 			}
@@ -278,11 +290,6 @@ public class Shape : KinematicBody2D
 			}
 			return max;
 		}
-	}
-
-	public void PrintName(string name)
-	{
-		GD.Print(name);
 	}
 
 

@@ -11,7 +11,7 @@ public class Game : Node2D
 
 
 	private const int BOARD_HEIGHT = 26;
-	private const int BOARD_WIDTH = 10;
+	private const int BOARD_WIDTH = 11;
 
 	List<List<string>> board = new List<List<string>>();
 	bool gameOver = false;
@@ -59,7 +59,7 @@ public class Game : Node2D
 		{
 			if(!board[row].Contains("[]"))
 			{
-				fullRows.Add(row + 2);
+				fullRows.Add(row + 1);
 				
 				for (int col = 0; col < BOARD_WIDTH; col++)
 				{
@@ -77,9 +77,8 @@ public class Game : Node2D
 		}
 
 		//Lowers unfilled rows that are higher than the deleted rows.
-		for (int row = 24; row >= 0; row--)
-		{
-			
+		for (int row = 26; row >= 0; row--)
+		{			
 			if (row < IntArrayMaxValue(fullRows) - 1 && !fullRows.Contains(row + 1))
 			{
 				for (int col = 0; col < BOARD_WIDTH; col++)

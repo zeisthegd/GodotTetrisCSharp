@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Art/UI/GameOverWindow.png" type="Texture" id=1]
+[ext_resource path="res://Art/Buttons/GameOver/GameOverButtons3.png" type="Texture" id=2]
+[ext_resource path="res://Art/Buttons/GameOver/GameOverButtons5.png" type="Texture" id=3]
+[ext_resource path="res://Art/Buttons/GameOver/GameOverButtons4.png" type="Texture" id=4]
+[ext_resource path="res://Art/Buttons/GameOver/GameOverButtons6.png" type="Texture" id=5]
+[ext_resource path="res://Art/Buttons/GameOver/GameOverButtons7.png" type="Texture" id=6]
+[ext_resource path="res://Art/Buttons/GameOver/GameOverButtons8.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/GameOver.cs" type="Script" id=8]
+
+[node name="GameOver" type="Control"]
+anchor_right = 0.5
+anchor_bottom = 0.284
+margin_right = 3.05176e-05
+margin_bottom = -0.144005
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+margin_left = 35.0
+margin_top = 90.0
+margin_right = 157.0
+margin_bottom = 118.0
+custom_constants/separation = 22
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="TextureButton" parent="Buttons"]
+margin_right = 26.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 4 )
+
+[node name="MainMenu" type="TextureButton" parent="Buttons"]
+margin_left = 48.0
+margin_right = 74.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+
+[node name="Ranking" type="TextureButton" parent="Buttons"]
+margin_left = 96.0
+margin_right = 122.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
