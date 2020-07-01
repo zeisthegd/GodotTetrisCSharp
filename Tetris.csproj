@@ -58,10 +58,13 @@
     <Compile Include="Scripts\AutoLoad.cs" />
     <Compile Include="Scripts\Block.cs" />
     <Compile Include="Scripts\Buttons\MiniButton.cs" />
+    <Compile Include="Scripts\FloatingTextSpawner.cs" />
     <Compile Include="Scripts\Game.cs" />
     <Compile Include="Scripts\GameOver.cs" />
+    <Compile Include="Scripts\General\Global.cs" />
     <Compile Include="Scripts\ImitationShape.cs" />
     <Compile Include="Scripts\LoginScreen.cs" />
+    <Compile Include="Scripts\MessageBox.cs" />
     <Compile Include="Scripts\RankingScene.cs" />
     <Compile Include="Scripts\Shape.cs" />
     <Compile Include="Scripts\Spawner.cs" />

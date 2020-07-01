@@ -52,3 +52,7 @@ margin_right = 122.0
 margin_bottom = 28.0
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
+[connection signal="pressed" from="Buttons/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Buttons/Restart" to="Buttons" method="_on_Restart_pressed"]
+[connection signal="pressed" from="Buttons/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Buttons/Ranking" to="." method="_on_Ranking_pressed"]

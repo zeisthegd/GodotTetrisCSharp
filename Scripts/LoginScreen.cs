@@ -3,6 +3,7 @@ using System;
 
 public class LoginScreen : Control
 {
+	MessageBox messageBox;
 	TextureRect loginWindow;
 	LineEdit username, password;
 

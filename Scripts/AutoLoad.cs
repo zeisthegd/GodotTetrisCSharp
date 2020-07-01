@@ -9,6 +9,9 @@ public class AutoLoad : Node
     Responsible for saving and loading save files and user preferences.
     Also adds and controls the music audio player.*/
 
+    static Global global;
+    static FloatingTextSpawner floatingTextSpawner;
+
     string configPath;
     string savePath;
 
@@ -32,7 +35,8 @@ public class AutoLoad : Node
 
     public override void _Ready()
     {
-        
+        global = (Global)GetNode("/root/Global");
+        floatingTextSpawner = (FloatingTextSpawner)GetNode("/root/FloatingTextSpawner");
     }
 
     void ChangeMusicVolume(int value)
@@ -137,6 +141,9 @@ public class AutoLoad : Node
     {
         get { return DEFAULT_SHAPE_DROP_SPEED; }
     }
+
+    public static Global Global { get => global; set => global = value; }
+    public static FloatingTextSpawner FloatingTextSpawner { get => floatingTextSpawner; set => floatingTextSpawner = value; }
 
 
 

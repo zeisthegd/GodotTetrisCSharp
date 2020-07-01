@@ -10,17 +10,29 @@ public class GameOver : Control
 		SetAppearPosition();
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-
-
 	public void SetAppearPosition()
 	{
 		RectGlobalPosition = new Vector2(AutoLoad.WINDOW_WIDTH/2 - width,
 			AutoLoad.WINDOW_HEIGHT / 2 - height);
-		GD.Print($"Scene size: {this.RectSize}");
+	}
+	private void _on_Restart_pressed()
+	{
+		GetTree().ReloadCurrentScene();
+	}
+
+
+	private void _on_MainMenu_pressed()
+	{
+		GetTree().ChangeScene("res://Scenes/StartMenu.tscn");
+	}
+
+	private void _on_Ranking_pressed()
+	{
+		GetTree().ChangeScene("res://Scenes/Ranking.tscn");
 	}
 }
+
+
+
+
+

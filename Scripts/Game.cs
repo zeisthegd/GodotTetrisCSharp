@@ -9,7 +9,6 @@ public class Game : Node2D
 	Spawner spawner;
 	UI userInterface;
 
-
 	private const int BOARD_HEIGHT = 26;
 	private const int BOARD_WIDTH = 10;
 
@@ -20,6 +19,8 @@ public class Game : Node2D
 
 	public override void _Ready()
 	{
+		AutoLoad.FloatingTextSpawner.ShowMessage("show message");
+
 		spawner = (Spawner)GetNode("Spawner");
 		userInterface = (UI)GetNode("UI");
 		AutoLoad.ShapeDropSpeed = AutoLoad.DEFAULT_SHAPE_DROP_SPEED_PROP;	
