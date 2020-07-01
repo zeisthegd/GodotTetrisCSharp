@@ -11,7 +11,7 @@ public class Game : Node2D
 
 
 	private const int BOARD_HEIGHT = 26;
-	private const int BOARD_WIDTH = 11;
+	private const int BOARD_WIDTH = 10;
 
 	List<List<string>> board = new List<List<string>>();
 	bool gameOver = false;
@@ -32,6 +32,7 @@ public class Game : Node2D
 			board.Add(new List<string>() { });
 			for (int col = 0; col < BOARD_WIDTH; col++)
 			{
+				GD.Print(col);
 				board[row].Add("[]");
 			}
 		}
@@ -42,9 +43,10 @@ public class Game : Node2D
 		//Turns Vector2 positions that contain blocks into X on the game board.
 		foreach(Vector2 pos in blockPositions)
 		{
-			board[(int)pos.y / AutoLoad.CellSize - 1][(int)pos.x / AutoLoad.CellSize - 7] = "[X]";
-		}
+			board[(int)pos.y / AutoLoad.CellSize][(int)pos.x / AutoLoad.CellSize - 7] = "[X]";
+			
 
+		}
 		if (!gameOver)
 		{
 			spawner.Spawn();
@@ -55,8 +57,8 @@ public class Game : Node2D
 	private void RowCheck()
 	{
 		List<int> fullRows = new List<int>();
-		for (int row = 0; row < BOARD_HEIGHT; row++)
-		{
+		for (int row = BOARD_HEIGHT - 1; row > 0; row--)
+		{		
 			if(!board[row].Contains("[]"))
 			{
 				fullRows.Add(row + 1);
@@ -77,7 +79,7 @@ public class Game : Node2D
 		}
 
 		//Lowers unfilled rows that are higher than the deleted rows.
-		for (int row = 26; row >= 0; row--)
+		for (int row = 25; row >= 0; row--)
 		{			
 			if (row < IntArrayMaxValue(fullRows) - 1 && !fullRows.Contains(row + 1))
 			{
@@ -91,11 +93,26 @@ public class Game : Node2D
 						///the highest filled and lowest filled row.
 						if (row == (IntArrayMaxValue(fullRows) - 2) || row == (IntArrayMaxValue(fullRows) - 3)
 							&& !fullRows.Contains(row + 2))
+						{
 							board[row + 1][col] = "[X]";
+							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
+							GD.Print("Row: " + row);
+							GD.Print("Lower " + 1);
+						}
 						else if (row == (IntArrayMaxValue(fullRows) - 3) && fullRows.Count > 1)
+						{
 							board[row + 2][col] = "[X]";
+							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
+							GD.Print("Row: " + row);
+							GD.Print("Lower " + 2);
+						}
 						else
+						{
 							board[row + fullRows.Count][col] = "[X]";
+							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
+							GD.Print("Row: " + row);
+							GD.Print("Lower " + 3);
+						}
 					}
 				}
 			}

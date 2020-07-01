@@ -48,7 +48,7 @@ public class Shape : KinematicBody2D
 
 		game = (Game)GetParent().GetParent();
 
-        userInterface = (UI)GetParent().GetParent().GetNode("UI");
+		userInterface = (UI)GetParent().GetParent().GetNode("UI");
 
 		//shapeDropSound = (AudioStreamSample)ResourceLoader.Load("");
 		//lineBreakSound = (AudioStreamSample)ResourceLoader.Load("");
@@ -147,25 +147,20 @@ public class Shape : KinematicBody2D
 		{
 			try
 			{
-                //Get each block's next position
+				//Get each block's next position
 				Vector2 nextPos = block.GlobalPosition + direction * AutoLoad.CellSize;
 
-                if (nextPos.y == 8)
-                    return true;
-                if (nextPos.y < 8)
-                    return false;
-
-                //Check if that next position is possible for the block to move to
+				//Check if that next position is possible for the block to move to
 				if (Math.Round(nextPos.x) < 112 || Math.Round(nextPos.x) > 272 || Mathf.Round(nextPos.y) > 416
-					|| game.Board[Mathf.Abs(((int)Math.Round(nextPos.y) / AutoLoad.CellSize)) - 1][((int)Math.Round(nextPos.x) / AutoLoad.CellSize) - 7] != "[]")
+					|| game.Board[Mathf.Abs(((int)Math.Round(nextPos.y) / AutoLoad.CellSize))][((int)Math.Round(nextPos.x) / AutoLoad.CellSize) - 7] != "[]")
 					return false;
 
 			}
 			catch(Exception ex)
 			{
 				GD.Print(block.GlobalPosition + direction * AutoLoad.CellSize);
-                GD.Print(ex.Message);
-            }
+				GD.Print(ex.Message);
+			}
 
 		}
 		return true;
@@ -211,7 +206,7 @@ public class Shape : KinematicBody2D
 		//Delete blocks from fullRows
 		foreach (int row in rows)
 		{
-			var rowYPos = row * AutoLoad.CellSize + 8;
+			var rowYPos = (row - 1) * AutoLoad.CellSize + 8;
 			GD.Print($"RowYPos = {rowYPos}");
 			for (int block = blocks.Count - 1; block >= 0; block--)
 			{
@@ -231,7 +226,6 @@ public class Shape : KinematicBody2D
 		if (blocks.Count <= 0)
 		{
 			QueueFree();
-			return;
 		}
 
 		//Lower the remaining dropped shapes that are above removed rows
