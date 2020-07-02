@@ -58,6 +58,10 @@
     <Compile Include="Scripts\AutoLoad.cs" />
     <Compile Include="Scripts\Block.cs" />
     <Compile Include="Scripts\Buttons\MiniButton.cs" />
+    <Compile Include="Scripts\Database\BUS\PlayerBUS.cs" />
+    <Compile Include="Scripts\Database\DAO\DbConnection.cs" />
+    <Compile Include="Scripts\Database\DAO\PlayerDAO.cs" />
+    <Compile Include="Scripts\Database\DTO\PlayerDTO.cs" />
     <Compile Include="Scripts\FloatingTextSpawner.cs" />
     <Compile Include="Scripts\Game.cs" />
     <Compile Include="Scripts\GameOver.cs" />

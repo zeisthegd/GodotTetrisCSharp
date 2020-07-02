@@ -1,19 +1,19 @@
 using Godot;
 using System;
 
-public class MessageBox : Popup
+public class MessageBox : Control
 {  
 	string message;
-	RichTextLabel rtfLabel;
+	LineEdit rtfLabel;
 
-	public RichTextLabel RtfLabel { get => rtfLabel; set => rtfLabel = value; }
+	public LineEdit RtfLabel { get => rtfLabel; set => rtfLabel = value; }
 	public string Message { get => message; set => message = value; }
 
 	public override void _Ready()
 	{
-		rtfLabel = (RichTextLabel)GetNode("Message");
+		rtfLabel = (LineEdit)GetNode("Message");
 		rtfLabel.Text = message;
-		PopupCentered();
+		Show();
 	}
 
 	public MessageBox() { }

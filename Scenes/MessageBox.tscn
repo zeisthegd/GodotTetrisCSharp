@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/MessageBox.cs" type="Script" id=1]
 
-[node name="MessageBox" type="Popup"]
+[node name="MessageBox" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -10,6 +10,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Message" type="RichTextLabel" parent="."]
-margin_right = 179.0
-margin_bottom = 14.0
+[node name="Message" type="LineEdit" parent="."]
+margin_left = 118.889
+margin_top = 153.655
+margin_right = 297.889
+margin_bottom = 177.655
+rect_scale = Vector2( 0.75, 0.75 )
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

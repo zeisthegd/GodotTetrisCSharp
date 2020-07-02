@@ -96,23 +96,14 @@ public class Game : Node2D
 							&& !fullRows.Contains(row + 2))
 						{
 							board[row + 1][col] = "[X]";
-							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
-							GD.Print("Row: " + row);
-							GD.Print("Lower " + 1);
 						}
 						else if (row == (IntArrayMaxValue(fullRows) - 3) && fullRows.Count > 1)
 						{
 							board[row + 2][col] = "[X]";
-							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
-							GD.Print("Row: " + row);
-							GD.Print("Lower " + 2);
 						}
 						else
 						{
 							board[row + fullRows.Count][col] = "[X]";
-							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
-							GD.Print("Row: " + row);
-							GD.Print("Lower " + 3);
 						}
 					}
 				}
