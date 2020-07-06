@@ -52,6 +52,7 @@
       <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +69,10 @@
     <Compile Include="Scripts\General\Global.cs" />
     <Compile Include="Scripts\ImitationShape.cs" />
     <Compile Include="Scripts\LoginScreen.cs" />
+    <Compile Include="Scripts\LoginWindow.cs" />
     <Compile Include="Scripts\MessageBox.cs" />
     <Compile Include="Scripts\RankingScene.cs" />
+    <Compile Include="Scripts\RegisterWindow.cs" />
     <Compile Include="Scripts\Shape.cs" />
     <Compile Include="Scripts\Spawner.cs" />
     <Compile Include="Scripts\StartMenu.cs" />

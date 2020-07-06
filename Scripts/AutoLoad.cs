@@ -12,15 +12,18 @@ public class AutoLoad : Node
     static Global global;
     static FloatingTextSpawner floatingTextSpawner;
 
+    string saveFolderPath;
+    static string savePathForCSharp = @"Saves\players.txt";
+    static string savePath;
     string configPath;
-    string savePath;
+    
 
     public const int WINDOW_HEIGHT = 416, WINDOW_WIDTH = 384;
 
 
 
     const int CELL_SIZE = 16;
-    const float DEFAULT_SHAPE_DROP_SPEED = 1f;
+    const float DEFAULT_SHAPE_DROP_SPEED = 0.75f;
 
     AudioStreamPlayer musicPlayer = new AudioStreamPlayer();
     static float shapeDropSpeed = DEFAULT_SHAPE_DROP_SPEED;
@@ -34,9 +37,10 @@ public class AutoLoad : Node
     Dictionary<int, int> highScore;
 
     public override void _Ready()
-    {
+    {       
         global = (Global)GetNode("/root/Global");
         floatingTextSpawner = (FloatingTextSpawner)GetNode("/root/FloatingTextSpawner");
+        InitSaveFolderAndFile();
     }
 
     void ChangeMusicVolume(int value)
@@ -53,6 +57,29 @@ public class AutoLoad : Node
         if (musicVolume == -50)
             musicVolume = -1000;
     }
+
+    /// <summary>
+    /// Create Saves folder and initiate a text file to store players' data
+    /// </summary>
+    void InitSaveFolderAndFile()
+    {
+        var directory = new Directory();
+         saveFolderPath = OS.GetExecutablePath().GetBaseDir().PlusFile("Saves");
+        //saveFolderPath = directory.GetCurrentDir() + "Saves";
+        directory.MakeDir(saveFolderPath);
+
+        savePath = saveFolderPath + "/players.txt";
+        GD.Print(savePath);
+        var file = new File();
+        if(!file.FileExists(savePath))
+        {
+            file.Open(savePath, File.ModeFlags.WriteRead);
+            GD.Print(AutoLoad.SavePath);
+            file.Close();
+        }
+        
+    }
+
 
     void SaveConfig()
     {
@@ -144,6 +171,8 @@ public class AutoLoad : Node
 
     public static Global Global { get => global; set => global = value; }
     public static FloatingTextSpawner FloatingTextSpawner { get => floatingTextSpawner; set => floatingTextSpawner = value; }
+    public static string SavePath { get => savePath;}
+    public static string SavePathForCSharp { get => savePathForCSharp;}
 
 
 

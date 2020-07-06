@@ -1,21 +1,38 @@
-using Godot;
 using System;
+using Godot;
+using System.Data;
+using System.Data.SqlClient;
 
-public class DbConnection : Node
+namespace Database
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public class DbConnection : Node
     {
-        
-    }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+        public static bool SaveFileExists()
+        {
+            File playersData = new File();
+
+            if (playersData.FileExists(AutoLoad.SavePath))
+                return true;
+
+            return false;
+        }
+
+        public static void WriteToFile(string[] players)
+        {
+            System.IO.File.WriteAllText(AutoLoad.SavePathForCSharp, String.Empty);
+
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(AutoLoad.SavePathForCSharp))
+            {
+
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (i != players.Length - 1)
+                        file.WriteLine(players[i]);
+                    else file.Write(players[i]);
+                }
+            }
+        }
+    }
 }

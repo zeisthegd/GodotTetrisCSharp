@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Tetris"
 config/description="Small Game By Phong!"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/LoginScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

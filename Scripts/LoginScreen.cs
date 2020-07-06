@@ -1,19 +1,22 @@
 using Godot;
 using System;
+using Database;
 
 public class LoginScreen : Control
 {
-	MessageBox messageBox;
-	TextureRect loginWindow;
+	TextureRect loginWindow, registerWindow;
 	LineEdit username, password;
+	PlayerBUS playerBUS;
+
 
 	public override void _Ready()
 	{
 		loginWindow = (TextureRect)GetNode("LoginWindow");
-		username = (LineEdit)loginWindow.GetNode("Username");
-		password = (LineEdit)loginWindow.GetNode("Password");
+		registerWindow = (TextureRect)GetNode("RegisterWindow");
 		loginWindow.Hide();
+		registerWindow.Hide();
 	}
+
 
 	private void _on_LoginButton_pressed()
 	{
@@ -27,9 +30,9 @@ public class LoginScreen : Control
 
 	private bool CheckUser()
 	{
-		if (username.Text != "" && password.Text != "")
-			return true;
-		return false;
+		playerBUS = new PlayerBUS();
+		return playerBUS.CheckPlayerLoginData(username.Text,password.Text);
+
 	}
 
 
@@ -43,6 +46,9 @@ public class LoginScreen : Control
 		loginWindow.Hide();
 	}
 }
+
+
+
 
 
 
