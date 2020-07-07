@@ -4,18 +4,24 @@ using System;
 public class MiniButton : Node
 {
     UI ui;
-	public override void _Ready()
+    PackedScene pauseWindowScene = (PackedScene)ResourceLoader.Load("res://Scenes/PauseWindow.tscn");
+
+    public override void _Ready()
 	{
         ui = (UI)GetParent();
 	}
 
 	private void _on_Pause_pressed()
 	{
-        ui.GameOverFunction();
-	}
+        PauseWindow newwPauseWindow = (PauseWindow)pauseWindowScene.Instance();
+
+        ui.AddChild(newwPauseWindow);
+
+        GetTree().Paused = true;
+    }
 
 
-	private void _on_FullScreen_pressed()
+    private void _on_FullScreen_pressed()
 	{
 		OS.WindowFullscreen = !OS.WindowFullscreen;
 	}
@@ -23,7 +29,10 @@ public class MiniButton : Node
 
 	private void _on_Audio_pressed()
 	{
-		// Replace with function body.
-	}
+        if (Game.AudioPlayer.VolumeDb == -100)
+            Game.AudioPlayer.VolumeDb = AutoLoad.MusicVolume;
+        else if (Game.AudioPlayer.VolumeDb > 0)
+            Game.AudioPlayer.VolumeDb = -100;
+    }
 }
 

@@ -9,10 +9,12 @@ public class GameOver : Control
 	public override void _Ready()
 	{
 		SetAppearPosition();
+
 		name = (Label)GetNode("Data").GetNode("Username");
 		lines = (Label)GetNode("Data").GetNode("Lines");
 		hiScore = (Label)GetNode("Data").GetNode("Highscore");
 		ui = (UI)GetParent();
+
 		SetText();
 	}
 
@@ -36,13 +38,13 @@ public class GameOver : Control
 
 	private void _on_MainMenu_pressed()
 	{
-		GetTree().ChangeScene("res://Scenes/StartMenu.tscn");
-	}
+        AutoLoad.Global.GotoScene("res://Scenes/StartMenu.tscn");
+    }
 
 	private void _on_Ranking_pressed()
 	{
-		GetTree().ChangeScene("res://Scenes/Ranking.tscn");
-	}
+        AutoLoad.Global.GotoScene("res://Scenes/Ranking.tscn");
+    }
 }
 
 

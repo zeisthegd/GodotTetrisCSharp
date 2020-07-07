@@ -4,22 +4,36 @@ using Database;
 
 public class LoginWindow : TextureRect
 {
-	LineEdit username, password;
-	public override void _Ready()
+	LineEdit username, password; 
+    public override void _Ready()
 	{
 		username = (LineEdit)GetNode("Username");
 		password = (LineEdit)GetNode("Password");
+        
+    }
 
-	}
+    public override void _Process(float delta)
+    {
+        if (Input.IsActionJustPressed("ui_accept"))
+            Login();
+    }
 
-	private void _on_Login_pressed()
+    private void _on_Login_pressed()
 	{
-		if(IsValidated())
-		{
-			if (CheckUser())
-				GetTree().ChangeScene("res://Scenes/StartMenu.tscn");
-		}
+        Login();
 	}
+
+    private void Login()
+    {
+        AutoLoad.InitPlayerBUS();
+        if (IsValidated())
+        {
+            if (CheckUser())
+                AutoLoad.Global.GotoScene("res://Scenes/StartMenu.tscn");
+        }
+    }
+
+
 	private bool CheckUser()
 	{
 		return AutoLoad.PlayerBUS.CheckPlayerLoginData(username.Text, password.Text);
@@ -34,6 +48,7 @@ public class LoginWindow : TextureRect
 
 	private void _on_Clear_pressed()
 	{
+        
 		username.Text = "";
 		password.Text = "";
 	}
@@ -56,7 +71,7 @@ public class LoginWindow : TextureRect
 		}
 		return true;
 	}
-
+    public LineEdit Username { get => username; }
 }
 
 

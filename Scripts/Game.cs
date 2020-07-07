@@ -6,11 +6,9 @@ using System.Collections.Generic;
 
 public class Game : Node2D
 {
-
-
 	Spawner spawner;
 	UI userInterface;
-	MusicPlayer audioPlayer;
+	static MusicPlayer audioPlayer;
 
 	private const int BOARD_HEIGHT = 26;
 	private const int BOARD_WIDTH = 10;
@@ -27,7 +25,7 @@ public class Game : Node2D
 		userInterface = (UI)GetNode("UI");
 		AutoLoad.ShapeDropSpeed = AutoLoad.DEFAULT_SHAPE_DROP_SPEED_PROP;
 
-		
+		AutoLoad.LoadConfig();
 	}
 
 	public void InitGameBoard()
@@ -113,8 +111,6 @@ public class Game : Node2D
 		userInterface.SetScore(fullRows.Count);
 
 	}
-
-
 	private int IntArrayMaxValue(List<int> array)
 	{
 		if(array.Count!=0)
@@ -132,4 +128,5 @@ public class Game : Node2D
 
 	public bool GameOver { get => gameOver; set => gameOver = value; }
 	public List<List<string>> Board { get { return board; }}
+	public static MusicPlayer AudioPlayer { get => audioPlayer; set => audioPlayer = value; }
 }

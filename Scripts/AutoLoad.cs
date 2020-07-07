@@ -17,7 +17,7 @@ public class AutoLoad : Node
     string saveFolderPath;
     static string savePathForCSharp = @"Saves\players.txt";
     static string savePath;
-    string configPath;
+    static string configPath;
     
 
     public const int WINDOW_HEIGHT = 416, WINDOW_WIDTH = 384;
@@ -33,11 +33,8 @@ public class AutoLoad : Node
     static float shapeDropSpeed = DEFAULT_SHAPE_DROP_SPEED;
 
     //Bien dat trong file config
-    static int musicVolume = 7;
-    int sfxVolume = 7;
-    bool fullScreen = true;
-
-    Dictionary<int, int> highScore;
+    static int musicVolume = 0;
+    static bool fullScreen = true;
 
     public override void _Ready()
     {       
@@ -46,11 +43,10 @@ public class AutoLoad : Node
 
         InitSaveFolderAndFile();
 
-        InitConfig();
-        LoadConfig();
-        
-        playerBUS = new PlayerBUS();
+        InitPlayerBUS();
 
+        InitConfig();
+        LoadConfig();            
     }
     public static void PlayMusic(Node currentNode,AudioStream music)
     {
@@ -71,12 +67,7 @@ public class AutoLoad : Node
             musicVolume = -1000;
     }
 
-    void ChangeSFXVolume(int value)
-    {
-        sfxVolume = value;
-        if (musicVolume == -50)
-            musicVolume = -1000;
-    }
+
 
     /// <summary>
     /// Create Saves folder and initiate a text file to store players' data
@@ -109,12 +100,11 @@ public class AutoLoad : Node
             SaveConfig();
         }
     }
-    void SaveConfig()
+    public static void SaveConfig()
     {
         var config = new ConfigFile();
         var file = new File();
         config.SetValue("audio", "music_volume", musicVolume);
-        config.SetValue("audio", "sfx_volume", sfxVolume);
         config.SetValue("display", "fullscreen", fullScreen);
         if (file.FileExists("res://Saves/config.ini"))
         {
@@ -127,7 +117,7 @@ public class AutoLoad : Node
 
         
     }
-    void LoadConfig()
+    public static void LoadConfig()
     {
         var config = new ConfigFile();
         var err = config.Load(configPath);
@@ -135,16 +125,19 @@ public class AutoLoad : Node
         if (err != Error.Ok)
         {
             musicVolume = -10;
-            sfxVolume = -20;
             fullScreen = false;
             GD.Print("Loi trong qua trinh load cai dat!");
             return;
         }
 
         musicVolume = (int)config.GetValue("audio", "music_volume");
-        sfxVolume = (int)config.GetValue("audio", "sfx_volume");
         fullScreen = (bool)config.GetValue("display", "fullscreen");
         OS.WindowFullscreen = fullScreen;
+    }
+
+    public static void InitPlayerBUS()
+    {
+        playerBUS = new PlayerBUS();
     }
 
     #region Property
@@ -171,6 +164,7 @@ public class AutoLoad : Node
     public static string SavePathForCSharp { get => savePathForCSharp;}
     internal static PlayerBUS PlayerBUS { get => playerBUS;}
     public static int MusicVolume { get => musicVolume; set => musicVolume = value; }
+    public static bool FullScreen { get => fullScreen; set => fullScreen = value; }
 
 
 

@@ -3,19 +3,47 @@ using System;
 
 public class Option : Control
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
-
-	// Called when the node enters the scene tree for the first time.
+	Label mVolumeValue;
+	CheckBox fullScreen;
+	HSlider musicVolume;
 	public override void _Ready()
 	{
-		
+		fullScreen = (CheckBox)GetNode("FullScreen");
+		musicVolume = (HSlider)GetNode("MusicVolume");
+		mVolumeValue = (Label)GetNode("MVolumeValue");
+
+		fullScreen.Pressed = AutoLoad.FullScreen;
+		musicVolume.Value = AutoLoad.MusicVolume;
+		mVolumeValue.Text = ((int)musicVolume.Value).ToString();
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+	private void _on_Back_pressed()
+	{
+		GetTree().ChangeScene("res://Scenes/StartMenu.tscn");
+	}
+
+
+	private void _on_CheckBox_pressed()
+	{
+		AutoLoad.FullScreen = fullScreen.Pressed;
+		AutoLoad.SaveConfig();
+		AutoLoad.LoadConfig();
+	}
+
+
+	private void _on_MusicVolume_value_changed(float value)
+	{
+		if (musicVolume.Value == 0)
+			AutoLoad.MusicVolume = -100;       
+		else
+			AutoLoad.MusicVolume = (int)musicVolume.Value;
+
+		mVolumeValue.Text = ((int)musicVolume.Value).ToString();
+		AutoLoad.SaveConfig();
+		AutoLoad.LoadConfig();
+
+	}
 }
+
+
+

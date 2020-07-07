@@ -73,6 +73,7 @@
     <Compile Include="Scripts\LoginWindow.cs" />
     <Compile Include="Scripts\MessageBox.cs" />
     <Compile Include="Scripts\Option.cs" />
+    <Compile Include="Scripts\PauseWindow.cs" />
     <Compile Include="Scripts\RankingScene.cs" />
     <Compile Include="Scripts\RegisterWindow.cs" />
     <Compile Include="Scripts\Shape.cs" />

@@ -22,18 +22,27 @@ public class RegisterWindow : TextureRect
 		TextureRect loginWindow = (TextureRect)GetParent().GetNode("LoginWindow");
 		loginWindow.Show();
 	}
+    public override void _Process(float delta)
+    {
+        if (Input.IsActionJustPressed("ui_accept"))
+            Register();
+    }
 
-
-	private void _on_Register_pressed()
+    private void _on_Register_pressed()
 	{
-		if(IsValidated())
-		{
-			if (AutoLoad.PlayerBUS.RegisterNewPlayer(username.Text, password.Text))
-			{
-				ChangeToLoginWindow();
-			}
-		}
+        Register();
 	}
+
+    private void Register()
+    {
+        if (IsValidated())
+        {
+            if (AutoLoad.PlayerBUS.RegisterNewPlayer(username.Text, password.Text))
+            {
+                ChangeToLoginWindow();
+            }
+        }
+    }
 
 	private bool IsValidated()
 	{
