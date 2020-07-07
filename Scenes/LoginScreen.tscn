@@ -42,6 +42,7 @@ margin_right = 211.0
 margin_bottom = 227.0
 
 [node name="LoginWindow" type="TextureRect" parent="."]
+visible = false
 margin_left = 96.0
 margin_top = 145.057
 margin_right = 288.0

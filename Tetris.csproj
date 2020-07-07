@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Audio\MusicPlayer.cs" />
     <Compile Include="Scripts\AutoLoad.cs" />
     <Compile Include="Scripts\Block.cs" />
     <Compile Include="Scripts\Buttons\MiniButton.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Scripts\LoginScreen.cs" />
     <Compile Include="Scripts\LoginWindow.cs" />
     <Compile Include="Scripts\MessageBox.cs" />
+    <Compile Include="Scripts\Option.cs" />
     <Compile Include="Scripts\RankingScene.cs" />
     <Compile Include="Scripts\RegisterWindow.cs" />
     <Compile Include="Scripts\Shape.cs" />

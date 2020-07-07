@@ -5,7 +5,6 @@ using Database;
 public class LoginWindow : TextureRect
 {
 	LineEdit username, password;
-	PlayerBUS playerBUS;
 	public override void _Ready()
 	{
 		username = (LineEdit)GetNode("Username");
@@ -23,8 +22,7 @@ public class LoginWindow : TextureRect
 	}
 	private bool CheckUser()
 	{
-		playerBUS = new PlayerBUS();
-		return playerBUS.CheckPlayerLoginData(username.Text, password.Text);
+		return AutoLoad.PlayerBUS.CheckPlayerLoginData(username.Text, password.Text);
 
 	}
 	private void _on_ToRegister_pressed()

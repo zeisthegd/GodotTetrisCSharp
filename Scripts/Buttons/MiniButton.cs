@@ -3,19 +3,15 @@ using System;
 
 public class MiniButton : Node
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
-
-	// Called when the node enters the scene tree for the first time.
+    UI ui;
 	public override void _Ready()
 	{
-
+        ui = (UI)GetParent();
 	}
 
 	private void _on_Pause_pressed()
 	{
-		// Replace with function body.
+        ui.GameOverFunction();
 	}
 
 

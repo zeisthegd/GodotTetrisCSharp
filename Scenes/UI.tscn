@@ -39,6 +39,9 @@ margin_left = 295.0
 margin_top = 228.0
 margin_right = 361.0
 margin_bottom = 263.0
+text = "0"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,6 +51,9 @@ margin_left = 295.0
 margin_top = 308.0
 margin_right = 361.0
 margin_bottom = 343.0
+text = "0"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

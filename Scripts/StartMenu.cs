@@ -3,9 +3,10 @@ using System;
 
 public class StartMenu : Control
 {
-	public override void _Ready()
+    AudioStream loginScreen = (AudioStream)ResourceLoader.Load(@"res://Audio/Music/Home - Toby Fox.ogg");
+    public override void _Ready()
 	{
-
+        AutoLoad.PlayMusic(this,loginScreen);
 	}
 
 

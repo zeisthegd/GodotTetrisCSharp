@@ -5,10 +5,8 @@ using Database;
 public class RegisterWindow : TextureRect
 {
 	LineEdit username, password, cfmPassword;
-	PlayerBUS playerBUS;
 	public override void _Ready()
 	{
-		playerBUS = new PlayerBUS();
 		username = (LineEdit)GetNode("Username");
 		password = (LineEdit)GetNode("Password");
 		cfmPassword = (LineEdit)GetNode("ConfirmPassword");
@@ -30,7 +28,7 @@ public class RegisterWindow : TextureRect
 	{
 		if(IsValidated())
 		{
-			if (playerBUS.RegisterNewPlayer(username.Text, password.Text))
+			if (AutoLoad.PlayerBUS.RegisterNewPlayer(username.Text, password.Text))
 			{
 				ChangeToLoginWindow();
 			}

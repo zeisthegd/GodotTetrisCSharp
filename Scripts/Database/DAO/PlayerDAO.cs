@@ -14,7 +14,7 @@ namespace Database
         {
             if (DbConnection.SaveFileExists())
                 GetPlayersFromFile();
-
+            else GD.Print("File not exist");
         }
 
         public string[] PlayersData { get => playersData; set => playersData = value; }

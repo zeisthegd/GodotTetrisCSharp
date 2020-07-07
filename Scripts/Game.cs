@@ -6,8 +6,11 @@ using System.Collections.Generic;
 
 public class Game : Node2D
 {
+
+
 	Spawner spawner;
 	UI userInterface;
+	MusicPlayer audioPlayer;
 
 	private const int BOARD_HEIGHT = 26;
 	private const int BOARD_WIDTH = 10;
@@ -19,10 +22,12 @@ public class Game : Node2D
 
 	public override void _Ready()
 	{
-        
-        spawner = (Spawner)GetNode("Spawner");
+		audioPlayer = (MusicPlayer)GetNode("MusicPlayer");
+		spawner = (Spawner)GetNode("Spawner");
 		userInterface = (UI)GetNode("UI");
-		AutoLoad.ShapeDropSpeed = AutoLoad.DEFAULT_SHAPE_DROP_SPEED_PROP;	
+		AutoLoad.ShapeDropSpeed = AutoLoad.DEFAULT_SHAPE_DROP_SPEED_PROP;
+
+		
 	}
 
 	public void InitGameBoard()
@@ -32,7 +37,6 @@ public class Game : Node2D
 			board.Add(new List<string>() { });
 			for (int col = 0; col < BOARD_WIDTH; col++)
 			{
-				GD.Print(col);
 				board[row].Add("[]");
 			}
 		}
@@ -43,9 +47,7 @@ public class Game : Node2D
 		//Turns Vector2 positions that contain blocks into X on the game board.
 		foreach(Vector2 pos in blockPositions)
 		{
-			board[(int)pos.y / AutoLoad.CellSize][(int)pos.x / AutoLoad.CellSize - 7] = "[X]";
-			
-
+			board[(int)pos.y / AutoLoad.CellSize][(int)pos.x / AutoLoad.CellSize - 7] = "[X]";			
 		}
 		if (!gameOver)
 		{
@@ -108,7 +110,7 @@ public class Game : Node2D
 				}
 			}
 		}
-		//userInterface.SetScore(fullRows.Count);
+		userInterface.SetScore(fullRows.Count);
 
 	}
 

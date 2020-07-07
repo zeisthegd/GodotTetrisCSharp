@@ -2,3 +2,5 @@
 2 Aang 456 2500
 3 Toph 789 2600
 4 Sokka 123 1000
+5 Zuko 789 0
+6 Katara 456 0

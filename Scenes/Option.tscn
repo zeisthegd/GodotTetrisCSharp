@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Option.cs" type="Script" id=1]
+
+[node name="Option" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolume" type="HSlider" parent="."]
+margin_left = 116.015
+margin_top = 67.2475
+margin_right = 276.015
+margin_bottom = 83.2475
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 160.646
+margin_top = 88.4651
+margin_right = 184.646
+margin_bottom = 112.465

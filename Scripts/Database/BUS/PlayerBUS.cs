@@ -22,15 +22,19 @@ namespace Database
         private void GetPlayersData()
         {
             string[] dataFields;
-            if (playerDAO.PlayersData != null)
+            if (!(playerDAO.PlayersData[0] == ""))
             {
                 for (int i = 0; i < playerDAO.PlayersData.Length; i++)
                 {
                     dataFields = playerDAO.PlayersData[i].Trim().Split(' ');
-                    GD.Print(i);
                     playersList.Add(new PlayerDTO(int.Parse(dataFields[0]), dataFields[1], dataFields[2], int.Parse(dataFields[3])));
                 }
             }
+        }
+        public void UpdateHighScore(int hiScore)
+        {
+            playersList[currentPlayerIndex].HighScore = hiScore;
+            playerDAO.ListToArrayToFile(playersList);
         }
 
         public bool RegisterNewPlayer(string username,string password)
@@ -53,10 +57,16 @@ namespace Database
 
         public bool CheckPlayerLoginData(string username, string password)
         {
+            if(playerDAO.PlayersData[0] == "")
+            {
+                AutoLoad.FloatingTextSpawner.ShowMessage("There is no player in database. Please register!");
+                return false;
+            }
             if(CheckUsername(username))
             {
                 if(CheckPassword(password))
                 {
+                    GD.Print(playersList[currentPlayerIndex].HighScore.ToString());
                     return true;
                 }
             }
@@ -92,7 +102,13 @@ namespace Database
         {
             playerDAO.ListToArrayToFile(playersList);
         }
+
+        public PlayerDTO GetCurrentPlayer()
+        {
+            return playersList[currentPlayerIndex];
+        }
     }
+
 }
 
 

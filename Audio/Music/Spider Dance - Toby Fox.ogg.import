@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Spider Dance - Toby Fox.ogg-eb14d507f9eee5dfc70871b2c7538775.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Spider Dance - Toby Fox.ogg"
+dest_files=[ "res://.import/Spider Dance - Toby Fox.ogg-eb14d507f9eee5dfc70871b2c7538775.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

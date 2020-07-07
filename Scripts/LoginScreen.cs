@@ -5,9 +5,7 @@ using Database;
 public class LoginScreen : Control
 {
 	TextureRect loginWindow, registerWindow;
-	LineEdit username, password;
-	PlayerBUS playerBUS;
-
+	AudioStream loginScreen = (AudioStream)ResourceLoader.Load(@"res://Audio/Music/Home - Toby Fox.ogg");
 
 	public override void _Ready()
 	{
@@ -15,6 +13,7 @@ public class LoginScreen : Control
 		registerWindow = (TextureRect)GetNode("RegisterWindow");
 		loginWindow.Hide();
 		registerWindow.Hide();
+		AutoLoad.PlayMusic(this, loginScreen);
 	}
 
 
@@ -22,29 +21,9 @@ public class LoginScreen : Control
 	{
 		loginWindow.Show();
 	}
-	private void _on_Login_pressed()
-	{
-		if (CheckUser())
-			GetTree().ChangeScene("res://Scenes/StartMenu.tscn");
-	}
-
-	private bool CheckUser()
-	{
-		playerBUS = new PlayerBUS();
-		return playerBUS.CheckPlayerLoginData(username.Text,password.Text);
-
-	}
 
 
-	private void _on_Cancel_pressed()
-	{
-		username.Text = "";
-		password.Text = "";
-	}
-	private void _on_Close_pressed()
-	{
-		loginWindow.Hide();
-	}
+
 }
 
 
