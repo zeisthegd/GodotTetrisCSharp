@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/UI/Frame/RankFrame1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/RankFrames.cs" type="Script" id=2]
+
+[node name="RankFrame" type="TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -192.0
+margin_bottom = -379.0
+texture_normal = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rank" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 13.0
+margin_right = 27.0
+margin_bottom = 27.0
+rect_scale = Vector2( 0.75, 0.75 )
+text = "#9"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="Label" parent="."]
+margin_left = 34.0
+margin_top = 13.0
+margin_right = 250.0
+margin_bottom = 27.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "saladsnake"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Highscore" type="Label" parent="."]
+margin_left = 217.56
+margin_top = 12.608
+margin_right = 257.56
+margin_bottom = 26.608
+rect_scale = Vector2( 0.7, 0.7 )
+text = "10000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -21,7 +21,8 @@ public class PauseWindow : Control
 	private void _on_Restart_pressed()
 	{
 		GetTree().Paused = false;
-		GetTree().ReloadCurrentScene();
+		AutoLoad.Global.GotoScene("res://Scenes/Game.tscn");
+
 	}
 
 
@@ -42,7 +43,7 @@ public class PauseWindow : Control
 
 	private void _on_MusicVolume_value_changed(float value)
 	{
-		if (musicVolume.Value == 0)
+		if ((int)musicVolume.Value == 0)
 			AutoLoad.MusicVolume = -100;
 		else
 			AutoLoad.MusicVolume = (int)musicVolume.Value;

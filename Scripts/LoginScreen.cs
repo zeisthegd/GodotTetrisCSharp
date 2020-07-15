@@ -14,9 +14,6 @@ public class LoginScreen : Control
 		registerWindow = (RegisterWindow)GetNode("RegisterWindow");
 		loginWindow.Hide();
 		registerWindow.Hide();
-
-		
-
 		AutoLoad.PlayMusic(this, loginScreen);
 	}
 
@@ -26,9 +23,15 @@ public class LoginScreen : Control
 		loginWindow.Username.GrabFocus();
 	}
 
+	private void _on_Quit_pressed()
+	{
+		GetTree().Quit();
+	}
 
 
 }
+
+
 
 
 

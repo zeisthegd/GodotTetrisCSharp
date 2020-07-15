@@ -20,6 +20,7 @@ public class Game : Node2D
 
 	public override void _Ready()
 	{
+        GD.Print(this.GetPath());
 		audioPlayer = (MusicPlayer)GetNode("MusicPlayer");
 		spawner = (Spawner)GetNode("Spawner");
 		userInterface = (UI)GetNode("UI");

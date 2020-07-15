@@ -99,6 +99,9 @@ margin_right = 362.0
 margin_bottom = 384.0
 texture_normal = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button_MarginContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Button_MarginContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Button_MarginContainer/VBoxContainer/Ranking" to="." method="_on_Ranking_pressed"]

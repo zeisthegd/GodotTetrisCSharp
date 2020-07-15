@@ -15,6 +15,13 @@ public class Global : Node
         CallDeferred(nameof(DeferredGotoScene), path);
     }
 
+    public void ReloadScene(Node scene)
+    {
+
+        scene.GetTree().ReloadCurrentScene();
+
+    }
+
     public void DeferredGotoScene(string path)
     {
         CurrentScene.Free();
@@ -23,5 +30,6 @@ public class Global : Node
         GetTree().Root.AddChild(CurrentScene);
         GetTree().CurrentScene = CurrentScene;
     }
+
 
 }

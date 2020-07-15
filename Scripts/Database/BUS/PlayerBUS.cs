@@ -11,7 +11,7 @@ namespace Database
         int currentPlayerIndex = 0;
         List<PlayerDTO> playersList = new List<PlayerDTO>();
 
-        public List<PlayerDTO> PlayersList { get => playersList; }
+        
 
         public PlayerBUS()
         {
@@ -107,6 +107,7 @@ namespace Database
         {
             return playersList[currentPlayerIndex];
         }
+        public List<PlayerDTO> PlayersList { get => playersList; }
     }
 
 }

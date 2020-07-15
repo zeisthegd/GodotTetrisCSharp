@@ -19,7 +19,7 @@ public class Option : Control
 
 	private void _on_Back_pressed()
 	{
-		GetTree().ChangeScene("res://Scenes/StartMenu.tscn");
+		AutoLoad.Global.GotoScene("res://Scenes/StartMenu.tscn");
 	}
 
 
