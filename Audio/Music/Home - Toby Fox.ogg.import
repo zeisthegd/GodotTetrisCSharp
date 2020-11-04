@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Home - Toby Fox.ogg-72eee6a47db4382aad3441ffbc0d4000.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Home - Toby Fox.ogg"
+dest_files=[ "res://.import/Home - Toby Fox.ogg-72eee6a47db4382aad3441ffbc0d4000.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

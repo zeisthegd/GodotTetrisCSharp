@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Art/Background/LoginMenu.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LoginScreen.cs" type="Script" id=2]
@@ -9,6 +9,19 @@
 [ext_resource path="res://Art/UI/Buttons2.png" type="Texture" id=7]
 [ext_resource path="res://Art/UI/CloseWindowButton2.png" type="Texture" id=8]
 [ext_resource path="res://Art/UI/CloseWindowButton1.png" type="Texture" id=9]
+[ext_resource path="res://Art/UI/Buttons8.png" type="Texture" id=10]
+[ext_resource path="res://Art/UI/Buttons7.png" type="Texture" id=11]
+[ext_resource path="res://Art/UI/RegisterWindow.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/LoginWindow.cs" type="Script" id=13]
+[ext_resource path="res://Scripts/RegisterWindow.cs" type="Script" id=14]
+[ext_resource path="res://Art/UI/Buttons12.png" type="Texture" id=15]
+[ext_resource path="res://Art/UI/Buttons9.png" type="Texture" id=16]
+[ext_resource path="res://Art/UI/Buttons10.png" type="Texture" id=17]
+[ext_resource path="res://Art/UI/Buttons11.png" type="Texture" id=18]
+[ext_resource path="res://Art/Buttons/LoginButton1.png" type="Texture" id=19]
+[ext_resource path="res://Art/Buttons/LoginButton2.png" type="Texture" id=20]
+[ext_resource path="res://Art/Buttons/LogoutButton2.png" type="Texture" id=21]
+[ext_resource path="res://Art/Buttons/LogoutButton1.png" type="Texture" id=22]
 
 [node name="LoginScreen" type="Control"]
 anchor_right = 1.0
@@ -29,8 +42,10 @@ __meta__ = {
 [node name="LoginButton" type="TextureButton" parent="."]
 margin_left = 171.0
 margin_top = 187.0
-margin_right = 211.0
-margin_bottom = 227.0
+margin_right = 213.0
+margin_bottom = 229.0
+texture_normal = ExtResource( 19 )
+texture_hover = ExtResource( 20 )
 
 [node name="LoginWindow" type="TextureRect" parent="."]
 visible = false
@@ -39,26 +54,38 @@ margin_top = 145.057
 margin_right = 288.0
 margin_bottom = 263.057
 texture = ExtResource( 3 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Login" type="TextureButton" parent="LoginWindow"]
-margin_left = 31.947
-margin_top = 96.0477
-margin_right = 79.9471
-margin_bottom = 112.048
-texture_normal = ExtResource( 6 )
-texture_hover = ExtResource( 7 )
+margin_left = 72.1905
+margin_top = 96.2366
+margin_right = 120.191
+margin_bottom = 112.237
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cancel" type="TextureButton" parent="LoginWindow"]
-margin_left = 112.207
-margin_top = 95.9317
-margin_right = 160.207
-margin_bottom = 111.932
+[node name="ToRegister" type="TextureButton" parent="LoginWindow"]
+margin_left = 12.2509
+margin_top = 95.9061
+margin_right = 60.251
+margin_bottom = 111.906
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clear" type="TextureButton" parent="LoginWindow"]
+margin_left = 131.958
+margin_top = 95.6106
+margin_right = 179.958
+margin_bottom = 111.611
 texture_normal = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
 __meta__ = {
@@ -94,8 +121,112 @@ margin_top = 4.86653
 margin_right = 183.977
 margin_bottom = 12.8665
 texture_normal = ExtResource( 9 )
+
+[node name="RegisterWindow" type="TextureRect" parent="."]
+visible = false
+margin_left = 96.0
+margin_top = 145.057
+margin_right = 288.0
+margin_bottom = 263.057
+texture = ExtResource( 12 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToLogin" type="TextureButton" parent="RegisterWindow"]
+margin_left = 11.8387
+margin_top = 129.26
+margin_right = 59.8388
+margin_bottom = 145.261
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Register" type="TextureButton" parent="RegisterWindow"]
+margin_left = 71.9528
+margin_top = 128.508
+margin_right = 119.953
+margin_bottom = 144.509
+texture_normal = ExtResource( 18 )
+texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clear" type="TextureButton" parent="RegisterWindow"]
+margin_left = 132.19
+margin_top = 128.557
+margin_right = 180.19
+margin_bottom = 144.557
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="LineEdit" parent="RegisterWindow"]
+margin_left = 81.0
+margin_top = 32.0
+margin_right = 175.0
+margin_bottom = 56.0
+rect_scale = Vector2( 1, 0.575 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Password" type="LineEdit" parent="RegisterWindow"]
+margin_left = 80.8953
+margin_top = 64.0
+margin_right = 174.895
+margin_bottom = 88.0
+rect_scale = Vector2( 1, 0.575 )
+align = 1
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmPassword" type="LineEdit" parent="RegisterWindow"]
+margin_left = 81.0
+margin_top = 96.0
+margin_right = 175.0
+margin_bottom = 120.0
+rect_scale = Vector2( 1, 0.575 )
+align = 1
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="TextureButton" parent="RegisterWindow"]
+margin_left = 171.977
+margin_top = 4.86653
+margin_right = 183.977
+margin_bottom = 12.8665
+texture_normal = ExtResource( 9 )
 texture_hover = ExtResource( 8 )
+
+[node name="Quit" type="TextureButton" parent="."]
+margin_left = 336.0
+margin_top = 356.0
+margin_right = 362.0
+margin_bottom = 384.0
+texture_normal = ExtResource( 22 )
+texture_hover = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="LoginButton" to="." method="_on_LoginButton_pressed"]
-[connection signal="pressed" from="LoginWindow/Login" to="." method="_on_Login_pressed"]
-[connection signal="pressed" from="LoginWindow/Cancel" to="." method="_on_Cancel_pressed"]
-[connection signal="pressed" from="LoginWindow/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="LoginWindow/Login" to="LoginWindow" method="_on_Login_pressed"]
+[connection signal="pressed" from="LoginWindow/ToRegister" to="LoginWindow" method="_on_ToRegister_pressed"]
+[connection signal="pressed" from="LoginWindow/Clear" to="LoginWindow" method="_on_Clear_pressed"]
+[connection signal="pressed" from="LoginWindow/Close" to="LoginWindow" method="_on_Close_pressed"]
+[connection signal="pressed" from="RegisterWindow/ToLogin" to="RegisterWindow" method="_on_ToLogin_pressed"]
+[connection signal="pressed" from="RegisterWindow/Register" to="RegisterWindow" method="_on_Register_pressed"]
+[connection signal="pressed" from="RegisterWindow/Clear" to="RegisterWindow" method="_on_Clear_pressed"]
+[connection signal="pressed" from="RegisterWindow/Close" to="RegisterWindow" method="_on_Close_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

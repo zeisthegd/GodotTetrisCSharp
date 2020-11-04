@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class Shape : KinematicBody2D
 {
-
 	AudioStreamPlayer2D audioPlayer;
 	UI userInterface;
 	Game game;
@@ -122,7 +121,10 @@ public class Shape : KinematicBody2D
 			game.GameOver = true;
 
 			if (!IsValidPosition(Vector2.Zero, blocks))
-				Position = new Vector2(200, 8);
+			{
+				Position = new Vector2(200, -16);
+				userInterface.GameOverFunction();
+			}
 		}
 
 

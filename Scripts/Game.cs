@@ -8,7 +8,7 @@ public class Game : Node2D
 {
 	Spawner spawner;
 	UI userInterface;
-
+	static MusicPlayer audioPlayer;
 
 	private const int BOARD_HEIGHT = 26;
 	private const int BOARD_WIDTH = 10;
@@ -20,9 +20,13 @@ public class Game : Node2D
 
 	public override void _Ready()
 	{
+        GD.Print(this.GetPath());
+		audioPlayer = (MusicPlayer)GetNode("MusicPlayer");
 		spawner = (Spawner)GetNode("Spawner");
 		userInterface = (UI)GetNode("UI");
-		AutoLoad.ShapeDropSpeed = AutoLoad.DEFAULT_SHAPE_DROP_SPEED_PROP;	
+		AutoLoad.ShapeDropSpeed = AutoLoad.DEFAULT_SHAPE_DROP_SPEED_PROP;
+
+		AutoLoad.LoadConfig();
 	}
 
 	public void InitGameBoard()
@@ -32,7 +36,6 @@ public class Game : Node2D
 			board.Add(new List<string>() { });
 			for (int col = 0; col < BOARD_WIDTH; col++)
 			{
-				GD.Print(col);
 				board[row].Add("[]");
 			}
 		}
@@ -43,9 +46,7 @@ public class Game : Node2D
 		//Turns Vector2 positions that contain blocks into X on the game board.
 		foreach(Vector2 pos in blockPositions)
 		{
-			board[(int)pos.y / AutoLoad.CellSize][(int)pos.x / AutoLoad.CellSize - 7] = "[X]";
-			
-
+			board[(int)pos.y / AutoLoad.CellSize][(int)pos.x / AutoLoad.CellSize - 7] = "[X]";			
 		}
 		if (!gameOver)
 		{
@@ -95,33 +96,22 @@ public class Game : Node2D
 							&& !fullRows.Contains(row + 2))
 						{
 							board[row + 1][col] = "[X]";
-							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
-							GD.Print("Row: " + row);
-							GD.Print("Lower " + 1);
 						}
 						else if (row == (IntArrayMaxValue(fullRows) - 3) && fullRows.Count > 1)
 						{
 							board[row + 2][col] = "[X]";
-							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
-							GD.Print("Row: " + row);
-							GD.Print("Lower " + 2);
 						}
 						else
 						{
 							board[row + fullRows.Count][col] = "[X]";
-							GD.Print($"Array max value: {IntArrayMaxValue(fullRows)}");
-							GD.Print("Row: " + row);
-							GD.Print("Lower " + 3);
 						}
 					}
 				}
 			}
 		}
-		//userInterface.SetScore(fullRows.Count);
+		userInterface.SetScore(fullRows.Count);
 
 	}
-
-
 	private int IntArrayMaxValue(List<int> array)
 	{
 		if(array.Count!=0)
@@ -139,4 +129,5 @@ public class Game : Node2D
 
 	public bool GameOver { get => gameOver; set => gameOver = value; }
 	public List<List<string>> Board { get { return board; }}
+	public static MusicPlayer AudioPlayer { get => audioPlayer; set => audioPlayer = value; }
 }

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ASGORE - Toby Fox.ogg-d942e20081a609848b93bbcfab96c201.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/ASGORE - Toby Fox.ogg"
+dest_files=[ "res://.import/ASGORE - Toby Fox.ogg-d942e20081a609848b93bbcfab96c201.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

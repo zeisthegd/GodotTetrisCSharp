@@ -1,0 +1,84 @@
+using Godot;
+using System;
+using Database;
+
+public class LoginWindow : TextureRect
+{
+	LineEdit username, password; 
+    public override void _Ready()
+	{
+		username = (LineEdit)GetNode("Username");
+		password = (LineEdit)GetNode("Password");
+        
+    }
+
+    public override void _Process(float delta)
+    {
+        if (Input.IsActionJustPressed("ui_accept"))
+            Login();
+    }
+
+    private void _on_Login_pressed()
+	{
+        Login();
+	}
+
+    private void Login()
+    {
+        AutoLoad.InitPlayerBUS();
+        if (IsValidated())
+        {
+            if (CheckUser())
+                AutoLoad.Global.GotoScene("res://Scenes/StartMenu.tscn");
+        }
+    }
+
+
+	private bool CheckUser()
+	{
+		return AutoLoad.PlayerBUS.CheckPlayerLoginData(username.Text, password.Text);
+
+	}
+	private void _on_ToRegister_pressed()
+	{
+		this.Hide();
+		TextureRect registerWindow = (TextureRect)GetParent().GetNode("RegisterWindow");
+		registerWindow.Show();
+	}
+
+	private void _on_Clear_pressed()
+	{
+        
+		username.Text = "";
+		password.Text = "";
+	}
+	private void _on_Close_pressed()
+	{
+		this.Hide();
+	}
+
+	private bool IsValidated()
+	{
+		if (username.Text == "")
+		{
+			AutoLoad.FloatingTextSpawner.ShowMessage("Please input username!");
+			return false;
+		}
+		else if (password.Text == "")
+		{
+			AutoLoad.FloatingTextSpawner.ShowMessage("Please input password!");
+			return false;
+		}
+		return true;
+	}
+    public LineEdit Username { get => username; }
+}
+
+
+
+
+
+
+
+
+

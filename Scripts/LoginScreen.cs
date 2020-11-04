@@ -1,47 +1,40 @@
 using Godot;
 using System;
+using Database;
 
 public class LoginScreen : Control
 {
-	TextureRect loginWindow;
-	LineEdit username, password;
+	LoginWindow loginWindow;
+	RegisterWindow registerWindow;
+	AudioStream loginScreen = (AudioStream)ResourceLoader.Load(@"res://Audio/Music/Home - Toby Fox.ogg");
 
 	public override void _Ready()
 	{
-		loginWindow = (TextureRect)GetNode("LoginWindow");
-		username = (LineEdit)loginWindow.GetNode("Username");
-		password = (LineEdit)loginWindow.GetNode("Password");
+		loginWindow = (LoginWindow)GetNode("LoginWindow");
+		registerWindow = (RegisterWindow)GetNode("RegisterWindow");
 		loginWindow.Hide();
+		registerWindow.Hide();
+		AutoLoad.PlayMusic(this, loginScreen);
 	}
 
 	private void _on_LoginButton_pressed()
 	{
 		loginWindow.Show();
-	}
-	private void _on_Login_pressed()
-	{
-		if (CheckUser())
-			GetTree().ChangeScene("res://Scenes/StartMenu.tscn");
+		loginWindow.Username.GrabFocus();
 	}
 
-	private bool CheckUser()
+	private void _on_Quit_pressed()
 	{
-		if (username.Text != "" && password.Text != "")
-			return true;
-		return false;
+		GetTree().Quit();
 	}
 
 
-	private void _on_Cancel_pressed()
-	{
-		username.Text = "";
-		password.Text = "";
-	}
-	private void _on_Close_pressed()
-	{
-		loginWindow.Hide();
-	}
 }
+
+
+
+
+
 
 
 

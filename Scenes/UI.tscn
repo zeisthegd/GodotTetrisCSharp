@@ -29,32 +29,31 @@ __meta__ = {
 [node name="SpawnPos" type="Position2D" parent="NextBlock/Panel"]
 position = Vector2( 57, 144 )
 
-[node name="LineTracker" type="VBoxContainer" parent="."]
-margin_left = 271.248
-margin_top = 2.52982
-margin_right = 655.248
-margin_bottom = 52.5298
+[node name="Scoring" type="Control" parent="."]
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Lines" type="Label" parent="LineTracker"]
-margin_right = 384.0
-margin_bottom = 14.0
+[node name="Lines" type="Label" parent="Scoring"]
+margin_left = 295.0
+margin_top = 228.0
+margin_right = 361.0
+margin_bottom = 263.0
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HighScore" type="Label" parent="LineTracker"]
-margin_top = 18.0
-margin_right = 384.0
-margin_bottom = 32.0
-
-[node name="Highscore" type="Label" parent="LineTracker"]
-margin_top = 36.0
-margin_right = 384.0
-margin_bottom = 50.0
-
-[node name="GameOver" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="HighScore" type="Label" parent="Scoring"]
+margin_left = 295.0
+margin_top = 308.0
+margin_right = 361.0
+margin_bottom = 343.0
+text = "0"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -65,10 +64,10 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="Button" type="HBoxContainer" parent="."]
-margin_left = 288.0
-margin_top = 384.0
-margin_right = 368.0
-margin_bottom = 400.0
+margin_left = 287.949
+margin_top = 383.822
+margin_right = 367.949
+margin_bottom = 399.822
 custom_constants/separation = 16
 script = ExtResource( 5 )
 __meta__ = {

@@ -25,9 +25,9 @@ centered = false
 
 [node name="Buttons" type="HBoxContainer" parent="."]
 margin_left = 35.0
-margin_top = 90.0
+margin_top = 106.0
 margin_right = 157.0
-margin_bottom = 118.0
+margin_bottom = 134.0
 custom_constants/separation = 22
 __meta__ = {
 "_edit_use_anchors_": false
@@ -52,3 +52,33 @@ margin_right = 122.0
 margin_bottom = 28.0
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
+
+[node name="Data" type="VBoxContainer" parent="."]
+margin_left = 80.0
+margin_top = 38.0
+margin_right = 138.0
+margin_bottom = 94.0
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="Label" parent="Data"]
+margin_right = 58.0
+margin_bottom = 14.0
+text = "Phong"
+
+[node name="Lines" type="Label" parent="Data"]
+margin_top = 20.0
+margin_right = 58.0
+margin_bottom = 34.0
+text = "12"
+
+[node name="Highscore" type="Label" parent="Data"]
+margin_top = 40.0
+margin_right = 58.0
+margin_bottom = 54.0
+text = "50"
+[connection signal="pressed" from="Buttons/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Buttons/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Buttons/Ranking" to="." method="_on_Ranking_pressed"]

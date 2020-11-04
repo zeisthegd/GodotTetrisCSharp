@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hopes And Dreams - Toby Fox.ogg-2bf65c7d5f33524d6e5a61a7e0a976ea.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Hopes And Dreams - Toby Fox.ogg"
+dest_files=[ "res://.import/Hopes And Dreams - Toby Fox.ogg-2bf65c7d5f33524d6e5a61a7e0a976ea.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

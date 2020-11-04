@@ -3,41 +3,44 @@ using System;
 
 public class StartMenu : Control
 {
+	AudioStream loginScreen = (AudioStream)ResourceLoader.Load(@"res://Audio/Music/Home - Toby Fox.ogg");
+	Global global;
 	public override void _Ready()
 	{
-
+		AutoLoad.PlayMusic(this,loginScreen);
 	}
 
 
-	public override void _Process(float delta)
-	{
-
-	}
 	private void _on_Start_pressed()
 	{
-		GD.Print("CHUYEN SANG MAN CHOI CHINH!");
-		GetTree().ChangeScene("res://Scenes/Game.tscn");
+		AutoLoad.Global.GotoScene("res://Scenes/Game.tscn");
 	}
 
 	
 	private void _on_Ranking_pressed()
 	{
-		GetTree().ChangeScene("res://Scenes/Ranking.tscn");
+		AutoLoad.Global.GotoScene("res://Scenes/Ranking.tscn");
 	}
 
 
 	private void _on_Options_pressed()
 	{
-		GD.Print("CHUYEN SANG PHAN CAI DAT!");
+		AutoLoad.Global.GotoScene("res://Scenes/Option.tscn");
 	}
 
 	private void _on_Exit_pressed()
 	{
-		GD.Print("THOAT GAME!");
 		GetTree().Quit();
+	}
+	private void _on_Logout_pressed()
+	{
+		AutoLoad.Global.GotoScene("res://Scenes/LoginScreen.tscn");
 	}
 
 }
+
+
+
 
 
 

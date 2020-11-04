@@ -3,31 +3,38 @@ using System;
 
 public class MiniButton : Node
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+	UI ui;
+	PackedScene pauseWindowScene = (PackedScene)ResourceLoader.Load("res://Scenes/PauseWindow.tscn");
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
+		ui = (UI)GetParent();
 	}
 
 	private void _on_Pause_pressed()
 	{
-		// Replace with function body.
+		PauseWindow newwPauseWindow = (PauseWindow)pauseWindowScene.Instance();
+
+		ui.AddChild(newwPauseWindow);
+
+		GetTree().Paused = true;
 	}
 
 
 	private void _on_FullScreen_pressed()
 	{
-		OS.WindowFullscreen = !OS.WindowFullscreen;
-	}
+        AutoLoad.FullScreen = !AutoLoad.FullScreen;
+        AutoLoad.SaveConfig();
+        AutoLoad.LoadConfig();
+    }
 
 
 	private void _on_Audio_pressed()
 	{
-		// Replace with function body.
+		if (Game.AudioPlayer.VolumeDb == -100)
+			Game.AudioPlayer.VolumeDb = AutoLoad.MusicVolume;
+		else if (Game.AudioPlayer.VolumeDb > 0)
+			Game.AudioPlayer.VolumeDb = -100;
 	}
 }
 
